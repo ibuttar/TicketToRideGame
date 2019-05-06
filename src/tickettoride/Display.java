@@ -23,6 +23,9 @@ import javafx.scene.shape.Line;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.shape.Circle;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 
 public class Display extends Application {
 
@@ -45,9 +48,19 @@ public class Display extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        
+        // end of song playing code (song should loop while game runs)
         this.stage = primaryStage; //stage is used for event handler classes
         game = new Game();
-
+        
+         // Beatles - Ticket to Ride song playing in the background
+        String musicFile = "TicketToRideSong.wav";
+        
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.1);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
 //GRIDLINES   
 //<editor-fold defaultstate="collapsed" desc="comment">
 //Line c1 =new Line(100,0,100,1000);
